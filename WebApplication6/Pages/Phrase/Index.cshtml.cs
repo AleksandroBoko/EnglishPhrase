@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace WebApplication6.Pages.Phrase
 {
@@ -18,6 +20,18 @@ namespace WebApplication6.Pages.Phrase
         {
             return Page();
         }
+
+        public IActionResult OnGetAddForm()
+        {
+            var partial = new PartialViewResult();
+            partial.ViewName = "_AddingPhrase";
+            partial.ViewData = new ViewDataDictionary(new EmptyModelMetadataProvider(), new ModelStateDictionary())
+            {
+                Model = PhraseInput
+            };
+            
+            return partial;
+    }
 
         public IActionResult OnPost()
         {
