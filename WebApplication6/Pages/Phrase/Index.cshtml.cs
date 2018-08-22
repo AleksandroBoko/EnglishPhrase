@@ -9,8 +9,27 @@ namespace WebApplication6.Pages.Phrase
 {
     public class IndexModel : PageModel
     {
-        public void OnGet()
+        [BindProperty]
+        public PhraseInput PhraseInput { get; set; }
+        [BindProperty]
+        public List<PhraseInput> PhraseInputs { get; set; }
+
+        public IActionResult OnGet()
         {
+            return Page();
         }
+
+        public IActionResult OnPost()
+        {
+            return Page();
+        }
+    }
+
+    public class PhraseInput
+    {
+        public int Id { get; set; }
+        public string Statement { get; set; }
+        public string Translation { get; set; }
+        public string Sentences { get; set; }
     }
 }
