@@ -58,7 +58,7 @@ namespace WebApplication6.Pages.Phrase
             _dbcontext.Phrases.Add(phrase);
             _dbcontext.SaveChanges();
 
-            return Page();
+            return Redirect("/Phrase/Index");
         }
     }
 
